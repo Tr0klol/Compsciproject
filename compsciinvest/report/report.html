@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coursework Report – Wildfire Risk Monitoring</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-report">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Back to landing page">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">Wildfire Risk Monitor</span>
+      </a>
+      <div class="topbar-meta">Leaving Certificate Computer Science Coursework Report</div>
+    </div>
+  </header>
+
+  <nav class="navglass" aria-label="Report sections">
+    <ul>
+      <li><a href="#meeting-the-brief">1. Meeting the brief</a></li>
+      <li><a href="#investigation">2. Investigation</a></li>
+      <li><a href="#plan-and-design">3. Plan and design</a></li>
+      <li><a href="#create">4. Create</a></li>
+      <li><a href="#evaluation">5. Evaluation</a></li>
+      <li><a href="#references">6. References</a></li>
+      <li><a href="#summary-word-count">7. Summary word count</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="meeting-the-brief" class="card">
+      <h2>1. Meeting the brief</h2>
+
+      <h3>Video demonstration</h3>
+      <p>
+        The video below demonstrates the embedded wildfire risk monitoring system in operation, showing how
+        environmental data is collected, transmitted, logged, and used to adjust the wildfire-risk level.
+      </p>
+      <video controls width="720">
+        <source src="media/artefact_demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag. Please open <code>media/artefact_demo.mp4</code> directly.
+      </video>
+
+      <h3>How the artefact meets the brief</h3>
+      <p>
+        This section should briefly describe, in your own words, how the artefact meets each basic and any advanced
+        requirements of the brief, referring to specific moments in the video (e.g. timestamps) where those
+        features are demonstrated.
+      </p>
+    </section>
+
+    <section id="investigation" class="card">
+      <h2>2. Investigation</h2>
+      <p>
+        For this project, I investigated the issue of increasing wildfire risk caused by rising temperatures.
+        Climate research shows that global temperatures have increased significantly over the past few decades, and
+        this has made fire-prone seasons longer, drier, and more severe. Even small rises in temperature can dry
+        vegetation faster, reduce soil moisture and turn forests into more flammable environments. According to
+        recent European wildfire studies, the number of large fire events has almost doubled in the last 30 years,
+        which makes early environmental monitoring increasingly important.
+      </p>
+      <p>
+        To understand how I could collect environmental data myself, I researched existing embedded systems used in
+        wildfire detection and forest monitoring. The BBC micro:bit appeared repeatedly in educational
+        weather-station projects because it includes built-in temperature and light sensors and supports additional
+        analogue sensors such as soil-moisture probes. It can also send data wirelessly using the radio module,
+        which means one micro:bit can act as a remote sensor node while another acts as a receiver connected to a
+        computer. These systems run automatically once powered by a battery pack, which makes them suitable for
+        collecting continuous field data. Based on this research, I chose the micro:bit as my embedded system
+        because it is reliable, easy to program and capable of gathering the exact environmental indicators
+        relevant to wildfire risk.
+      </p>
+      <p>
+        I then examined wildfire-spread and fire-behaviour models to understand how data could feed into a
+        simulation. These models typically use temperature, wind speed, vegetation dryness, and terrain to
+        calculate fire intensity and spread direction. They update conditions over time, running repeated cycles
+        where new data changes the predicted outcome. From this, I learned that real-time moisture and temperature
+        inputs from my micro:bit will make my own model more realistic. This influenced my design by pushing me to
+        prioritise accurate moisture measurement rather than collecting broad or unrelated environmental data.
+      </p>
+      <p>
+        Finally, I researched adaptive and feedback mechanisms used in environmental monitoring systems. Many real
+        systems adjust risk levels automatically when temperatures rise or when moisture falls below a critical
+        threshold. Inspired by this, I decided that my project’s adaptive feature would automatically increase the
+        wildfire-risk level when temperature readings exceed a set value. This links directly to my theme and
+        demonstrates how embedded systems can respond to environmental change in real time.
+      </p>
+    </section>
+
+    <section id="plan-and-design" class="card">
+      <h2>3. Plan and design</h2>
+      <p>
+        The objective of this project is to design and implement a Micro:bit based weather monitoring system
+        capable of collecting environmental data relevant to wildfire risk. The system measures wind speed,
+        ambient temperature, sunlight levels, and soil moisture within a chosen outdoor area. These factors are
+        commonly associated with the ignition and spread of wildfires, making them suitable indicators for an
+        early warning system.
+      </p>
+      <p>
+        The real-world problem addressed by this system is the increasing risk of wildfires due to rising global
+        temperatures and prolonged dry periods. Early detection of high-risk environmental conditions can help
+        reduce damage to ecosystems and forests by allowing preventative action to be taken before a fire ignites.
+        This directly aligns with the project brief, which requires the use of computational modelling and data
+        collection to investigate an environmental issue. The system is designed to be realistic, achievable with
+        available resources, and scalable for real-world applications.
+      </p>
+      <p>
+        Several environmental modelling options were considered during the planning phase, including drought
+        modelling and biodiversity change. Drought modelling was initially appealing, as the Micro:bit includes
+        built-in sensors that could support this type of data collection. However, drought modelling would have
+        required long-term data collection and more complex statistical analysis to produce meaningful results.
+      </p>
+      <p>
+        Wildfire risk modelling was chosen because it allowed for a more direct and responsive system. Wildfires
+        are influenced by short-term changes in environmental conditions such as temperature, wind speed, and
+        moisture levels, making them suitable for near real-time monitoring. This option was also more challenging
+        from a computational perspective, which made it more rewarding and appropriate for a higher-level project.
+      </p>
+      <p>
+        The primary end users of this system are forestry managers and environmental researchers. Forestry
+        managers could use the system as an early warning tool to identify areas at increased risk of wildfire and
+        prioritise monitoring or intervention. Environmental researchers could benefit from the structured
+        environmental data collected, which could support studies on wildfire behaviour and climate change.
+      </p>
+      <p>
+        Students are also a key stakeholder group. The system is designed with clear computational logic, making
+        it suitable as an educational tool for students learning about embedded systems, environmental monitoring,
+        and data analysis. These stakeholders influenced the design by requiring clear outputs, reliable data
+        storage, and an understandable system model.
+      </p>
+      <p>
+        The main piece of technology used in this project is the BBC micro:bit. Version 1.5 was selected because
+        it was readily available and supports external digital and analogue sensors through its GPIO pins. These
+        sensors are used to measure wind speed, sunlight levels, temperature, and soil moisture.
+      </p>
+      <p>
+        Two Micro:bits are used in the final system. The first Micro:bit is responsible for collecting
+        environmental data. This data is then transmitted to a second Micro:bit using built-in radio
+        communication. Python is used to program both Micro:bits due to its simplicity and suitability for
+        handling sensor data. Because version 1.5 Micro:bits are used instead of newer versions, a Python script
+        running on a PC or laptop is used to transfer incoming data directly into a CSV file, allowing for more
+        advanced data processing.
+      </p>
+      <p>
+        The system follows a clear data-flow architecture. Environmental data is collected by the first Micro:bit
+        through connected sensors and transmitted wirelessly to a second Micro:bit using radio functions written
+        in Python. The second Micro:bit is connected to a PC or laptop via USB and outputs the received data to a
+        terminal interface.
+      </p>
+      <p>
+        A Python script running on the computer automatically logs this data to a CSV file with timestamps.
+        Another Python script analyses the data in real time to detect unusual patterns that may indicate an
+        increased risk of wildfire. When these conditions are detected, a warning system is triggered. This
+        feedback mechanism is essential, as it allows the system to respond adaptively to changing environmental
+        conditions rather than functioning as a passive data logger.
+      </p>
+    </section>
+
+    <section id="create" class="card">
+      <h2>4. Create</h2>
+
+      <h3>Development process</h3>
+      <p>
+        Before beginning development, I identified the hardware and software required for my project to avoid
+        delays later in the build stage. The hardware included two BBC micro:bit V1.5 boards, an analogue soil
+        moisture sensor, an analogue gas sensor, an analogue light sensor, and connecting wires. I used the
+        built-in temperature sensor on the micro:bit rather than an external temperature probe.
+      </p>
+      <p>
+        For software, I planned to use the Micro:bit Python editor (MakeCode Python) for programming the
+        micro:bits, and a Python development environment on my laptop for handling serial data and creating CSV
+        files. Planning this early meant I could test individual components as soon as they arrived and avoid
+        redesigning parts of the system due to missing equipment.
+      </p>
+
+      <h3>Development milestones</h3>
+      <p>
+        To manage the project effectively, I divided development into the following milestones based on the order
+        I actually worked in:
+      </p>
+      <ul>
+        <li>Hardware wiring and single-sensor testing</li>
+        <li>Wireless data transmission between micro:bits</li>
+        <li>Multi-sensor data integration and formatting</li>
+        <li>Laptop data logging and CSV generation</li>
+        <li>Risk analysis model and simulation system</li>
+      </ul>
+      <p>
+        Each milestone built directly on the previous stage and allowed me to test reliability before adding more
+        complexity.
+      </p>
+
+      <h3>Milestone 1 – Hardware wiring and sensor verification</h3>
+      <p>
+        My first goal was to confirm that each sensor functioned correctly when connected to the micro:bit. I
+        wired the soil moisture sensor to pin P1, the gas sensor to P2, and the light sensor to P3. Temperature
+        readings were taken using the micro:bit’s internal temperature sensor.
+      </p>
+      <p>
+        I wrote small Python test programs for each sensor to display raw analogue values on the LED display and
+        through the serial console. This allowed me to confirm that:
+      </p>
+      <ul>
+        <li>Soil moisture values decreased when the probe was placed in wet soil and increased in dry soil.</li>
+        <li>Light values increased under a lamp and dropped in darkness.</li>
+        <li>Gas sensor values changed slightly when exposed to lighter gas.</li>
+      </ul>
+      <p>
+        This stage was necessary to establish baseline ranges for each sensor and to confirm that wiring and power
+        supply were stable before attempting wireless communication.
+      </p>
+
+      <h3>Milestone 2 – Wireless data transmission setup</h3>
+      <p>
+        Next, I developed a radio communication system between two micro:bits. One micro:bit acted as the data
+        collector, while the second acted as the receiver.
+      </p>
+      <p>
+        The collector micro:bit gathered readings for temperature, soil moisture, gas, and light every few
+        seconds. These values were formatted into a single comma-separated string:
+      </p>
+      <p><code>temperature,soil,gas,light</code></p>
+      <p>
+        and transmitted using the micro:bit radio module on a fixed channel. The receiver micro:bit listened
+        continuously for incoming messages and printed the received data to its serial output.
+      </p>
+      <p>
+        Testing involved sending known fixed values to confirm correct ordering and verifying that no fields were
+        missing. I also tested transmission distance by moving the devices several metres apart to confirm stable
+        communication.
+      </p>
+
+      <h3>Milestone 3 – Multi-sensor integration and formatting reliability</h3>
+      <p>
+        Once radio transmission worked, I integrated all sensors into a single continuous data collection loop. I
+        implemented basic formatting checks to ensure that each message contained exactly four values.
+      </p>
+      <p>
+        If a corrupted or incomplete message was detected, the receiver discarded it rather than logging invalid
+        data. This reduced the risk of damaging the dataset used later by the prediction model.
+      </p>
+      <p>
+        During this stage, I tested the system by deliberately disconnecting sensors briefly and observing how the
+        receiver responded. This confirmed that faulty messages were filtered out correctly.
+      </p>
+
+      <h3>Milestone 4 – Laptop CSV logging system</h3>
+      <p>
+        The micro:bit V1.5 does not support direct file logging, so I created a Python script on my laptop to read
+        serial data from the receiver micro:bit via USB.
+      </p>
+      <p>The script:</p>
+      <ul>
+        <li>Opened the serial port</li>
+        <li>Read incoming data lines</li>
+        <li>Added a timestamp using the system clock</li>
+        <li>Appended each entry to a CSV file with headers</li>
+      </ul>
+      <p>
+        Testing involved restarting the script multiple times, unplugging and reconnecting the micro:bit, and
+        checking that:
+      </p>
+      <ul>
+        <li>No data rows were duplicated</li>
+        <li>No partial rows were written</li>
+        <li>Time ordering remained correct</li>
+      </ul>
+      <p>
+        This milestone allowed the system to produce structured datasets suitable for later analysis and
+        simulation.
+      </p>
+
+      <h3>Milestone 5 – Risk analysis and simulation model</h3>
+      <p>
+        The final milestone was creating a Python-based risk evaluation model. This model could operate using
+        either real sensor data from the CSV file or simulated data manually entered by the user.
+      </p>
+      <p>Thresholds were defined for each variable:</p>
+      <ul>
+        <li>High temperature</li>
+        <li>Low soil moisture</li>
+        <li>Elevated gas concentration</li>
+        <li>Low light level (night-time condition)</li>
+      </ul>
+      <p>
+        Each condition contributed to a weighted risk score. The total score classified the environment into
+        three states:
+      </p>
+      <ul>
+        <li>Green – Low risk</li>
+        <li>Yellow – Moderate risk</li>
+        <li>Red – High risk</li>
+      </ul>
+      <p>
+        The system displayed the result using LEDs on the micro:bit and text output in the Python console. I
+        tested the model using artificially high and low values to ensure that risk levels changed correctly and
+        consistently.
+      </p>
+
+      <h3>Problem encountered and solution</h3>
+      <p>
+        A major issue occurred during CSV generation. The serial data stream occasionally merged two messages
+        together into a single line, resulting in malformed rows such as:
+      </p>
+      <p><code>21,430,312,60022,435,310,598</code></p>
+      <p>
+        This happened because the micro:bit transmitted faster than the laptop script processed incoming data.
+        To solve this, I added:
+      </p>
+      <ul>
+        <li>A short delay between transmissions on the micro:bit</li>
+        <li>A buffer system in the Python script that split lines strictly using newline characters</li>
+        <li>A validation step to ensure exactly four numeric values were present before logging</li>
+      </ul>
+      <p>
+        I confirmed the fix by running the system continuously for 30 minutes and checking that all rows were
+        correctly structured.
+      </p>
+
+      <h3>Model and algorithm description</h3>
+      <p>The system operates using a distributed embedded model combined with a Python data processor.</p>
+      <p>Inputs:</p>
+      <ul>
+        <li>Temperature (°C)</li>
+        <li>Soil moisture (analogue value)</li>
+        <li>Gas concentration (analogue value)</li>
+        <li>Light level (analogue value)</li>
+      </ul>
+      <p>Processing steps:</p>
+      <ul>
+        <li>Sensors collect analogue data on the collector micro:bit.</li>
+        <li>Data is packaged into a formatted string and transmitted via radio.</li>
+        <li>Receiver micro:bit validates structure and forwards data via serial USB.</li>
+        <li>Laptop Python script timestamps and stores values in CSV format.</li>
+        <li>Risk model evaluates the latest values against predefined thresholds.</li>
+      </ul>
+      <p>Outputs:</p>
+      <ul>
+        <li>CSV dataset for long-term storage</li>
+        <li>Real-time risk level (green/yellow/red)</li>
+      </ul>
+      <p>Automatic adaptation:</p>
+      <p>
+        The system adapts automatically by recalculating risk every time new data is received. If environmental
+        conditions worsen, the classification updates immediately without user input. Simulation mode allows
+        testing future scenarios such as drought or high temperature events by injecting synthetic values into the
+        model.
+      </p>
+      <p>
+        This structured development process ensured the system was reliable, testable, and capable of both
+        real-world monitoring and predictive simulation.
+      </p>
+    </section>
+
+    <section id="evaluation" class="card">
+      <h2>5. Evaluation</h2>
+      <p>
+        Use this section to evaluate how well the final artefact meets its objectives and the project brief.
+        Include strengths, limitations, and justified suggestions for improvements or future iterations.
+      </p>
+    </section>
+
+    <section id="references" class="card">
+      <h2>6. References</h2>
+      <ul>
+        <li>
+          Forests journal article on cellular automata wildfire modelling:
+          <a href="https://www.mdpi.com/1999-4907/14/7/1371#:~:text=Based%20on%20the%20cellular%20automata,automata%20%5B2%2C32%5D.">
+            Wildfire spread modelling using cellular automata
+          </a>
+        </li>
+        <li>
+          ScienceDirect article on wildfire behaviour and climate:
+          <a href="https://www.sciencedirect.com/science/article/pii/S1574954124003029">
+            Wildfire behaviour and climate-related risk factors
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="summary-word-count" class="card">
+      <h2>7. Summary word count</h2>
+      <p>
+        Update the table below with the final word count for each section and ensure the overall total does not
+        exceed 2500 words.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Word count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Meeting the brief</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2. Investigation</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3. Plan and design</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4. Create</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5. Evaluation</td>
+            <td></td>
+          </tr>
+          <tr class="total-row">
+            <td>Total</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="end-actions">
+      <a class="btn btn-ghost" href="index.html">Back to landing</a>
+      <a class="btn btn-primary" href="#meeting-the-brief">Back to top</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>This report is part of the Leaving Certificate Computer Science coursework (2026).</p>
+  </footer>
+</body>
+</html>
+
