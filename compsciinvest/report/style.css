@@ -1,6 +1,4 @@
-/* ===========================
-   RESET + BASE
-=========================== */
+/* resetting */
 *,
 *::before,
 *::after {
@@ -20,9 +18,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===========================
-   BACKGROUND (UNEDITED IMAGE)
-=========================== */
+/*background img taken from prod.ai */
 .bg-fuzz {
   position: fixed;
   inset: 0;
@@ -34,9 +30,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* ===========================
-   COMMON LAYOUT
-=========================== */
+/* basic layout: both pages: todo: fix up top bar */
 .container {
   max-width: 1100px;
   margin: 1.5rem auto 2.5rem;
@@ -62,9 +56,7 @@ body {
   box-shadow: 0 40px 100px rgba(0,0,0,.55);
 }
 
-/* ===========================
-   LANDING PAGE
-=========================== */
+/* landing pg (from prod.ai) */
 .landing {
   min-height: calc(100vh - 90px);
   display: grid;
@@ -75,9 +67,7 @@ body {
   width: min(900px, 100%);
 }
 
-/* ===========================
-   LOGO
-=========================== */
+/* little logo small box */
 .logo {
   display: flex;
   align-items: center;
@@ -103,9 +93,7 @@ body {
   font-size: .95rem;
 }
 
-/* ===========================
-   BUTTONS
-=========================== */
+/* buttons : should probably clean up */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -143,9 +131,7 @@ body {
   border-color: rgba(165,180,252,.6);
 }
 
-/* ===========================
-   TOP BAR + NAV
-=========================== */
+/* top bar : FIXED */
 .topbar {
   position: sticky;
   top: 0;
@@ -218,9 +204,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===========================
-   TYPOGRAPHY
-=========================== */
+/* fonts spacing remember to look at blonded.co sources*/
 h2 {
   margin: 0 0 .6rem;
   font-size: 1.15rem;
@@ -260,9 +244,7 @@ code {
   border: 1px solid rgba(148,163,184,.22);
 }
 
-/* ===========================
-   MEDIA + TABLES
-=========================== */
+/* tables.*/
 video {
   max-width: 100%;
   border-radius: .9rem;
@@ -292,9 +274,7 @@ thead {
   font-weight: 650;
 }
 
-/* ===========================
-   FOOTER
-=========================== */
+
 .footer {
   text-align: center;
   padding: 1.3rem 1rem 1.6rem;
@@ -302,18 +282,14 @@ thead {
   color: rgba(226,232,240,.6);
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+
 @media (max-width: 720px) {
   .logo-title { font-size: 1.55rem; }
   .topbar-meta { display: none; }
   .card { padding: 1.2rem 1.2rem 1.4rem; }
 }
 
-/* ===========================
-   REDUCED MOTION
-=========================== */
+/* reduce motion makes it look smoother. */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
