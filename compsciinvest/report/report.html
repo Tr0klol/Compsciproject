@@ -39,15 +39,17 @@
         environmental data is collected, transmitted, logged, and used to adjust the wildfire-risk level.
       </p>
       <video controls width="720">
-        <source src="media/artefact_demo.mp4" type="video/mp4" />
+        <source src="artefact/video.mp4" type="video/mp4" />
         Your browser does not support the video tag. Please open <code>media/artefact_demo.mp4</code> directly.
       </video>
+      
+      <h3>Flowchart: Data Collection Process</h3>
+      <p>The flowchart below illustrates the process from starting the Micro:bit to logging the data on the PC:</p>
+      <img src="../Artefact/flowchart.png" alt="Flowchart showing the data collection process" width="720" />
 
       <h3>How the artefact meets the brief</h3>
       <p>
-        This section should briefly describe, in your own words, how the artefact meets each basic and any advanced
-        requirements of the brief, referring to specific moments in the video (e.g. timestamps) where those
-        features are demonstrated.
+       todo: write summary of how it meet with each point in breif. probably refer to video
       </p>
     </section>
 
@@ -357,8 +359,17 @@
     <section id="evaluation" class="card">
       <h2>5. Evaluation</h2>
       <p>
-        Use this section to evaluate how well the final artefact meets its objectives and the project brief.
-        Include strengths, limitations, and justified suggestions for improvements or future iterations.
+        The final artefact successfully meets the objectives of the project brief. The embedded system uses both analogue and digital inputs, including environmental sensors to collect forest-related data such as temperature, soil moisture, and light levels. The system operates automatically once started and generates primary outputs through LED indicators that display different warning levels based on calculated wildfire risk.
+
+A key strength of the system is its continuous data collection every two seconds, storing environmental readings in CSV format for later modelling. This allows real-world data to be integrated into the Python disaster risk model, improving realism. The layered risk thresholds (moderate and severe) also provide a clear simulation of wildfire risk escalation.
+
+The disaster risk model successfully uses collected sensor data combined with simulated environmental variables to model wildfire risk. Two what-if simulations were tested, such as increased temperature combined with low soil moisture, and reduced rainfall over time. These scenarios showed clear increases in predicted wildfire risk, demonstrating how environmental changes affect system behaviour.
+
+The adaptive element strengthens the project by introducing automatic responses. When the calculated risk exceeds defined thresholds, the system updates warning levels and displays alerts. This demonstrates a feedback mechanism where the system reacts to changing environmental conditions.
+
+However, there are limitations. The model simplifies complex forest ecosystems and does not account for all real-world variables such as wind speed or human activity. Future improvements could include integrating additional sensors, incorporating live open-source climate data, or refining the Python model to include more advanced weighting or machine learning techniques. Expanding the adaptive system to include physical responses, such as activating a cooling or watering mechanism, would also enhance realism.
+
+Overall, the project effectively demonstrates embedded system design, data collection, process simulation, disaster risk modelling, scenario testing, and adaptive system behaviour within the forest wildfire theme.
       </p>
     </section>
 
@@ -383,8 +394,7 @@
     <section id="summary-word-count" class="card">
       <h2>7. Summary word count</h2>
       <p>
-        Update the table below with the final word count for each section and ensure the overall total does not
-        exceed 2500 words.
+        todo; word counts
       </p>
       <table>
         <thead>
